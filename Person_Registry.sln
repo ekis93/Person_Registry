@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Person_Database", "Person_Database\Person_Database.csproj", "{8FAF77A8-E32A-4B5E-98C0-F9407C5AEFB3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelLibrary", "ModelLibrary\ModelLibrary.csproj", "{8CEA532C-1E28-42ED-BECC-2B4B94CF2067}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Person_Registry", "Person_Registry\Person_Registry.csproj", "{8FAF77A8-E32A-4B5E-98C0-F9407C5AEFB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +12,5 @@ Global
 		{8FAF77A8-E32A-4B5E-98C0-F9407C5AEFB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FAF77A8-E32A-4B5E-98C0-F9407C5AEFB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FAF77A8-E32A-4B5E-98C0-F9407C5AEFB3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8CEA532C-1E28-42ED-BECC-2B4B94CF2067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8CEA532C-1E28-42ED-BECC-2B4B94CF2067}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8CEA532C-1E28-42ED-BECC-2B4B94CF2067}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8CEA532C-1E28-42ED-BECC-2B4B94CF2067}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
