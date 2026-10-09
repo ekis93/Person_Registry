@@ -1,0 +1,15 @@
+https://stackoverflow.com/questions/816566/how-do-you-get-the-current-project-directory-from-c-sharp-code-when-creating-a-c
+
+
+using System;
+using System.IO;
+
+// This will get the current WORKING directory (i.e. \bin\Debug)
+string workingDirectory = Environment.CurrentDirectory;
+// or: Directory.GetCurrentDirectory() gives the same result
+
+// This will get the current PROJECT bin directory (ie ../bin/)
+string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
+
+// This will get the current PROJECT directory
+string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
