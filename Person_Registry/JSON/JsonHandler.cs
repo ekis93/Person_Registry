@@ -7,14 +7,12 @@ namespace Person_Registry.JSON;
 public class JsonHandler
 {
     private string _json { get; set; } = string.Empty;
-    private string _filePath { get; set; } = string.Empty;
-
-    public Dictionary<string, T> JsonToDictionary<T>(string filename)
+    public Dictionary<string,T> JsonToDictionary<T>(string filename)
     {
         try
         {
-            _filePath = GetJsonPath(filename);
-            _json = File.ReadAllText(_filePath);
+            string filePath = GetJsonPath(filename);
+            _json = File.ReadAllText(filePath);
         }
         catch (FileNotFoundException e)
         {
@@ -27,21 +25,20 @@ public class JsonHandler
             throw;
         }
 
-        Dictionary<string, T> dictionary;
+        Dictionary<string,T> collection;
 
         try
         {
-            dictionary = JsonSerializer.Deserialize<Dictionary<string, T>>(_json) ?? [];
+            collection = JsonSerializer.Deserialize<Dictionary<string, T>>(_json) ?? [];
         }
         catch (JsonException e)
         {
             ConsoleUi.WriteError(e, "Invalid JSON format");
             throw;
         }
-
-        return dictionary;
+        return collection;
     }
-
+    
     /// <summary>
     /// Returns the path to the given file relative to the current project directory.
     /// </summary>
