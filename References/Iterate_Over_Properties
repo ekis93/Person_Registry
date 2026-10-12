@@ -1,0 +1,9 @@
+https://stackoverflow.com/questions/8151888/c-sharp-iterate-through-class-properties
+
+Record record = new Record();
+
+PropertyInfo[] properties = typeof(Record).GetProperties();
+foreach (PropertyInfo property in properties)
+{
+    property.SetValue(record, value);
+}
