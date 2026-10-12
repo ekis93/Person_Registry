@@ -8,7 +8,6 @@ public class Address
         PostalCode = postalCode;
         City = city;
     }
-
     public string AddressName { get; private set; }
     public string PostalCode { get; private set; }
     public string City { get; private set; }
