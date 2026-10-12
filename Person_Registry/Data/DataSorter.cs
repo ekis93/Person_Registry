@@ -1,25 +1,34 @@
+using Person_Registry.Models.Person;
 namespace Person_Registry.Data;
 
-public class DataSorter
+public static class DataSorter
 {
-    public List<string> SortById<T>(IEnumerable<T> collection)
+    static readonly DataStorage DataStorage = new();
+    public static List<Person> SortById()
     {
-        return new List<string>();
+        return DataStorage.GetPeople().OrderBy(p => p.IdNumber).ToList();
     }
-    public List<string> SortFiveFirstId<T>(IEnumerable<T> collection)
+    public static List<Person> SortFiveFirstId()
     {
-        return new List<string>();
+        List<Person> sortedPeople = 
+            DataStorage.GetPeople().OrderBy(p => p.IdNumber).ToList();
+        List<Person> top5 = new List<Person>();
+        for (int i = 0; i < 5; i++)
+        {
+            top5.Add(sortedPeople[i]);
+        }
+        return top5;
     }
-    public List<string> SortByName<T>(IEnumerable<T> collection)
+    public static List<Person> SortByName()
     {
-        return new List<string>();
+        return new List<Person>();
     }
-    public List<string> SortFiveFirstName<T>(IEnumerable<T> collection)
+    public static List<Person> SortFiveFirstName()
     {
-        return new List<string>();
+        return new List<Person>();
     }
-    public List<string> SortNameSearch<T>(IEnumerable<T> collection)
+    public static List<Person> SortNameSearch()
     {
-        return new List<string>();
+        return new List<Person>();
     }
 }
