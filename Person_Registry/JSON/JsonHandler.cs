@@ -43,7 +43,7 @@ public class JsonHandler
     /// Returns the path to the given file relative to the current project directory.
     /// </summary>
     /// <param name="filename"></param>
-    /// <returns></returns>
+    /// <returns>string path to file.</returns>
     private string GetJsonPath(string filename)
     {
         string workingDirectory = Directory.GetCurrentDirectory();
