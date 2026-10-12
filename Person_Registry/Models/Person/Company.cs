@@ -7,7 +7,6 @@ public class Company
         CompanyName = companyName;
         CompanySlogan = companySlogan;
     }
-
     public string CompanyName { get; private set; }
     public string CompanySlogan { get; private set; }
 }
