@@ -1,6 +1,7 @@
 using Person_Registry.Data;
 using Person_Registry.Input;
 using Person_Registry.Models.Menu;
+using Person_Registry.Models.Person;
 using Person_Registry.UI;
 
 namespace Person_Registry;
@@ -17,22 +18,22 @@ public class MenuFlow
         SetStartMenu();
         if (_menu == null || _collection == null)
         {
-            var e = new NullReferenceException(); 
+            NullReferenceException e = new(); 
             ConsoleUi.WriteError
                 (e, $"Menu not set! Set the start menu first!");
             throw e;
         }
-        _ui.ShowUi(_menu);
+
         while (_running)
         {
-            string choice = PickMenuItem(_collection);
-            string menuItem = GetMenuItem(choice);
-            _ui.ClearUi();
-            _ui.ShowUi(menuItem,ConsoleColor.Green);
             _ui.ShowUi(_menu);
-            
+            string choice = PickMenuItem(_collection);
+            _ui.ClearUi();
+            string menuItem = GetMenuItem(choice);
+            _ui.ShowUi(menuItem,ConsoleColor.Green);
         }
         _ui.ClearUi();
+        _ui.ShowUi("Exiting program.");
     }
     private void SetStartMenu()
     {
@@ -42,23 +43,22 @@ public class MenuFlow
     }
     private string PickMenuItem(Dictionary<string,string> collection)
     {
-        var inputHandler = new UserInputHandler();
         bool valid = false;
         string? inputKey = null;
         
         while (!valid)
         {
-            inputKey = inputHandler.GetUserKey();
-            valid = inputHandler.ValidateUserInput(collection, inputKey);
+            inputKey = UserInputHandler.GetUserKey();
+            valid = UserInputHandler.ValidateUserInput(collection, inputKey);
             if (!valid)
             {
-                _ui.ResetUi(_menu ?? throw new NullReferenceException("_menu not set!"));
+                _ui.ClearUi();
                 ConsoleUi.WriteError($"Invalid input key: {inputKey}");
+                _ui.ShowUi(_menu ?? throw new NullReferenceException("_menu not set!"));
             }
         }
         
-        if (inputKey != null) return inputKey;
-        throw new NullReferenceException("inputKey not set!");
+        return inputKey ?? throw new NullReferenceException("inputKey not set!");
     }
     private string GetMenuItem(string key)
     {
@@ -68,30 +68,32 @@ public class MenuFlow
         {
             // 1: Show all | ID sort | Ascending
             case "1":
-                item = MenuBuilder.BuildMenu(DataSorter.SortById());
+                item = MenuBuilder.BuildMenu(DataSorter.GetAllById());
                 break;
             // 2: Show first five | ID sort | Ascending
             case "2":
-                item = MenuBuilder.BuildMenu(DataSorter.SortFiveFirstId());
+                item = MenuBuilder.BuildMenu(DataSorter.GetFiveById());
                 break; 
             // 3: Show all | Name sort | Ascending
             case "3":
-                item = MenuBuilder.BuildMenu(DataSorter.SortByName());
+                item = MenuBuilder.BuildMenu(DataSorter.GetAllByName());
                 break;
             // 4: Show first five | Name sort | Ascending
             case "4":
-                item = MenuBuilder.BuildMenu(DataSorter.SortFiveFirstName());
+                item = MenuBuilder.BuildMenu(DataSorter.GetFiveByName());
                 break;
             // 5: Search name | ID sort | Ascending
             case "5":
-                item = MenuBuilder.BuildMenu(DataSorter.SortNameSearch());
+                _ui.ShowUi("Please provide a search term: ");
+                string searchTerm = UserInputHandler.GetUserLine();
+                List<Person> people = DataSorter.GetAllByNameSearch(searchTerm);
+                item = MenuBuilder.BuildMenu(people);
+                DataSorter.ValidateInput(item);
                 break;
             // 6: Exit
             case "6": _running = false ; 
                 return "";
         }
-        
-        if (item != null) return item;
-        throw new NullReferenceException("item not set!");
+        return item ?? throw new NullReferenceException("item not set!");
     }
 }
