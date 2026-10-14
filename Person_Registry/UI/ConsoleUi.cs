@@ -27,4 +27,10 @@ public class ConsoleUi : IConsole
         Console.WriteLine($"{customMessage}...{e.Message}");
         Console.ResetColor();
     }
+    public static void WriteError(string message)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(message);
+        Console.ResetColor();
+    }
 }
