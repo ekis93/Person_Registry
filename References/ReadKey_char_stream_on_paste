@@ -1,0 +1,9 @@
+Documents:
+https://stackoverflow.com/questions/17777659/console-readkey-unexpected-behavior-with-pasted-text-multi-keys-entered-at-onc
+https://learn.microsoft.com/en-us/dotnet/api/system.console.readkey?view=net-10.0
+https://learn.microsoft.com/en-us/dotnet/api/system.console.keyavailable?view=net-10.0#system-console-keyavailable
+
+Problem:
+When pasting a stream of text into the console, Console.Readkey stores those chars in the stream sequentially, and on each new call to ReadKey it will return the next char in that pasted stream.
+
+The problem to solve: how to make ReadKey only take in the first char from the text stream and discard the rest. 
