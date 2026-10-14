@@ -12,6 +12,7 @@ public class UserInputHandler
     }
     public string GetUserKey()
     {
+        //TODO: Implement a check in case the user pastes a string of text to the console.
         return Console.ReadKey().KeyChar.ToString();
     }
     public string GetUserLine()
