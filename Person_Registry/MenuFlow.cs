@@ -22,14 +22,15 @@ public class MenuFlow
                 (e, $"Menu not set! Set the start menu first!");
             throw e;
         }
-        
         _ui.ShowUi(_menu);
-        
         while (_running)
         {
-            var choice = PickMenuItem(_menu, _collection);
-            ShowMenuItem(choice.key);
+            string choice = PickMenuItem(_collection);
+            string menuItem = GetMenuItem(choice);
+            _ui.ClearUi();
+            _ui.ShowUi(menuItem,ConsoleColor.Green);
             _ui.ShowUi(_menu);
+            
         }
         _ui.ClearUi();
     }
@@ -39,23 +40,30 @@ public class MenuFlow
         _collection = mainMenu.GetMenu();
         _menu = MenuBuilder.BuildMenu(_collection);
     }
-    private (string key, string? value) PickMenuItem
-        (string menu, Dictionary<string,string> collection)
+    private string PickMenuItem(Dictionary<string,string> collection)
     {
         var inputHandler = new UserInputHandler();
         bool valid = false;
-        string input = "";
+        string? inputKey = null;
+        
         while (!valid)
         {
-            input = inputHandler.GetUserKey();
-            valid = inputHandler.ValidateUserInput(collection, input);
+            inputKey = inputHandler.GetUserKey();
+            valid = inputHandler.ValidateUserInput(collection, inputKey);
+            if (!valid)
+            {
+                _ui.ResetUi(_menu ?? throw new NullReferenceException("_menu not set!"));
+                ConsoleUi.WriteError($"Invalid input key: {inputKey}");
+            }
         }
-        return (input, collection.GetValueOrDefault(input));
+        
+        if (inputKey != null) return inputKey;
+        throw new NullReferenceException("inputKey not set!");
     }
-    private void ShowMenuItem(string key)
+    private string GetMenuItem(string key)
     {
-        _ui.ClearUi();
-        string item = "";
+        string? item = null;
+        
         switch (key)
         {
             // 1: Show all | ID sort | Ascending
@@ -80,8 +88,10 @@ public class MenuFlow
                 break;
             // 6: Exit
             case "6": _running = false ; 
-                return;
+                return "";
         }
-        _ui.ShowUi(item,ConsoleColor.Green);
+        
+        if (item != null) return item;
+        throw new NullReferenceException("item not set!");
     }
 }
