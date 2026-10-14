@@ -6,16 +6,16 @@ public class UserInputHandler
     /// Validates the user's input to the console.
     /// </summary>
     /// <returns>True if any key matches the input, false if not.</returns>
-    public bool ValidateUserInput(Dictionary<string,string> collection, string input)
+    public static bool ValidateUserInput(Dictionary<string,string> collection, string input)
     {
         return collection.ContainsKey(input);
     }
-    public string GetUserKey()
+    public static string GetUserKey()
     {
         //TODO: Implement a check in case the user pastes a string of text to the console.
-        return Console.ReadKey().KeyChar.ToString();
+        return Console.ReadKey(true).KeyChar.ToString();
     }
-    public string GetUserLine()
+    public static string GetUserLine()
     {
         return Console.ReadLine() ?? "";
     }
