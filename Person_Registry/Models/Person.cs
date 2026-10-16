@@ -1,8 +1,6 @@
 using System.Reflection;
 using System.Text.RegularExpressions;
-
-namespace Person_Registry.Models.Person;
-
+namespace Person_Registry.Models;
 public class Person
 {
     public Person(
@@ -52,4 +50,26 @@ public class Person
         return Regex.Replace(property.Name, "([A-Z])", " $1",
             RegexOptions.Compiled).Trim();
     }
+}
+public class Company
+{
+    public Company(string companyName, string companySlogan)
+    {
+        CompanyName = companyName;
+        CompanySlogan = companySlogan;
+    }
+    public string CompanyName { get; private set; }
+    public string CompanySlogan { get; private set; }
+}
+public class Address
+{
+    public Address(string addressName, string postalCode, string city)
+    {
+        AddressName = addressName;
+        PostalCode = postalCode;
+        City = city;
+    }
+    public string AddressName { get; private set; }
+    public string PostalCode { get; private set; }
+    public string City { get; private set; }
 }
