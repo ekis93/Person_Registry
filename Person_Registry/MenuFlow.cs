@@ -5,20 +5,20 @@ namespace Person_Registry;
 
 public static class MenuFlow
 {
-    private static string? _menu;
+    private static string? _mainMenu;
     private static bool _running = true;
     
     public static void Start()
     {
         SetStartMenu();
-        if (_menu == null) throw new NullReferenceException("Menu not set!");
-        _menu.ShowUi();
-        while (_running) _menu.PutUnder(GetMenuItem()).ClearUi().ShowUi();
+        if (_mainMenu == null) throw new NullReferenceException("Menu not set!");
+        _mainMenu.ShowUi();
+        while (_running) _mainMenu.PutUnder(GetMenuItem()).ClearUi().ShowUi();
     }
     private static void SetStartMenu()
     {
         MainMenu mainMenu = new();
-        _menu = mainMenu.GetMenu().BuildMenu();
+        _mainMenu = mainMenu.GetMenu().BuildMenu();
     }
     private static string GetMenuItem()
     {
