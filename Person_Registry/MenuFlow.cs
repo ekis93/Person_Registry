@@ -14,6 +14,8 @@ public static class MenuFlow
         if (_mainMenu == null) throw new NullReferenceException("Menu not set!");
         _mainMenu.ShowUi();
         while (_running) _mainMenu.PutUnder(GetMenuItem()).ClearUi().ShowUi();
+        _mainMenu.ClearUi();
+        Ui.ShowUi("Exiting Program.");
     }
     private static void SetStartMenu()
     {
