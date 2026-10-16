@@ -1,6 +1,8 @@
 # Publish & Run
 #### Linux
 
+Publishing both builds the program and creates a publish folder where you will find the executable file.
+
 1: From the solution folder, run the following in the console: 
 
 Publish
