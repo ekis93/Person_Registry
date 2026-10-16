@@ -10,18 +10,9 @@ Publish and run
 3: Double click Person_Registry.exe
 
 Code segmentation
-MenuFlow:
-Controls the flow of the application. It acts as the program's point of entry and point of exit. It contains functionality for starting the menu loop, setting and getting the menu, and exiting the menu loop. It is designed to give the program a top-down structure (start-loop-exit), which makes the flow easier to follow.
+I have grouped properties and methods into separate classes depending on their responsibility and relations. For instance all methods which extend types went into their separate extension classes named after the type they extend, and these extension classes in turn went into a file called Extensions.cs to group them together. For classes representing data, like Person.cs, I grouped together related properties and methods operating on those properties into their own classes. For the Person class any property related directly to a person was defined in the class itself. All properties relating to an Address or a Company got defined in their own respective classes. Because the Company and Address classes relate to the Person class as properties I put those into the Person.cs file to group them together. This was done to give the program a structure that is easier to follow. By grouping related methods and classes together it makes it easier to read and debug the code.
 
-UserInputHandler:
-Contains methods for reading user input. The naming and grouping of the methods gives the reader a clear indication that this is where user input is handled. This makes it easier to debug issues related to user input.
+C# and .NET
+C# is one of the programming languages used in .NET, and .NET itself is a platform we can use to develop and build different kinds of applications. .NET also has libraries with already written functionality we can use to avoid writing unnecessary boilerplate code.
 
-Ui.cs
-Contains a method for writing to the console. Wrapping the write functionality in a specific class and method makes it so that we only have to change the code in that specific place. If we want to change how we write to the console in the future this saves us from having to change code in many different places.
-
-Extensions.cs
-Contains all the extension classes and extension methods used in the program. These add custom functionality to existing type, and by using extension methods we can chain together several method calls in sequence. In the program this makes the code more concise and readable. For instance, in GetMenuItem() we can return the result in a single line by passing the return value along the extension chain, instead of writing separate method calls on different lines.
-Example: return DataSorter.GetFiveByName().BuildMenu();
-
-IMenu.cs
-IMenu.cs is an interface defining a method that a Menu class must implement. This ensures that any Menu class implementing the interface follows the same contract. In this case they must implement the GetMenu method definition.
+One distinct difference between C# and other languages like Javascript, for instance, is that C# is a type-safe language. This means that each type provided in an operation must be compatible in order to compile. In Javascript mismatched type operations will be silently converted to a format that runs, but it may not be the format you need in the code. This can result in errors at runtime which are not easily debugged. By enforcing type-safe rules writing in C# allows us to more easily catch and fix errors at compile time.
