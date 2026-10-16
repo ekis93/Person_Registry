@@ -46,4 +46,6 @@ StringExtensions
 DictionaryExtensions
 ListExtensions
 
-Using extension methods allows us to perform operations directly on the type itself, which means we can chain several methods together to perform operations in sequence using dot notation.
+Using extension methods allows us to extend a type's functionality by adding our own methods. These methods will then act as if they existed in the given type, and they will also appear in the autocomplete for that type. This also lets us perform operations directly on the type itself, which means we can chain several methods together to perform operations in sequence using dot notation.
+
+In rhe program it makes the code more consize and readable.
