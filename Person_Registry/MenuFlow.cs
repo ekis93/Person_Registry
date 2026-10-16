@@ -34,7 +34,7 @@ public static class MenuFlow
             case "4":
                 return DataSorter.GetFiveByName().BuildMenu();
             case "5":
-                Ui.Show("Please provide a search term:");
+                Ui.ShowUi("Please provide a search term:");
                 string term = UserInputHandler.GetUserLine();
                 return DataSorter.GetAllByNameSearch(term).BuildMenu().Validate();
             case "6":
