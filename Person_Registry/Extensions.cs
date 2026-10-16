@@ -63,7 +63,8 @@ public static class ListExtensions
     public static List<Person> FindAllNames(this List<Person> people, string searchTerm)
     {
         return string.IsNullOrWhiteSpace(searchTerm) 
-            ? new List<Person>() : people.Where(p => p.Name.Contains(searchTerm)).ToList();
+            ? new List<Person>() : people.Where(p => p.Name.Contains
+                (searchTerm, StringComparison.CurrentCultureIgnoreCase)).ToList();
     }
     public static List<Person> GetFirstFive(this List<Person> people)
     {
