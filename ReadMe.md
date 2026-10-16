@@ -1,8 +1,9 @@
 # Publish & Run
 #### Linux
+
 1: From the solution folder, run the following in the console: 
 
-Build
+Publish
 ```
 dotnet publish
 ```
@@ -13,13 +14,14 @@ Run
 #### Windows
 1: From the solution folder, run the following in the console: 
 ```
-'dotnet publish' in the console
+dotnet publish
 ```
 2: Go to: 
 ```
 .\Person_Registry\bin\Release\net10.0\publish
 ```
 3: Double click Person_Registry.exe
+
 
 # Code segmentation
 I have grouped properties and methods into separate classes depending on their responsibility and relations. For instance all methods which extend types went into their separate extension classes named after the type they extend, and these extension classes in turn went into a file called Extensions.cs to group them together. For classes representing data, like Person.cs, I grouped together related properties and methods operating on those properties into their own classes. For the Person class, any property related directly to a person was defined in the class itself. All properties relating to an Address or a Company got defined in their own respective classes. Because the Company and Address classes relate to the Person class, as properties, I put those classes into the Person.cs file to group them together. This was done to give the program a structure that is easier to follow. By grouping related methods and classes together it makes it easier to read and debug the code.
