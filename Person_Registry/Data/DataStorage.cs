@@ -1,4 +1,4 @@
-using Person_Registry.Models.Person;
+using Person_Registry.Models;
 
 namespace Person_Registry.Data;
 
