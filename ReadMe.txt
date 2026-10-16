@@ -23,31 +23,14 @@ Run application
 Code segmentation
 
 MenuFlow:
-Controls the flow of the application.
-
-It acts as the program's point of entry and point of exit. From the Start method it loops through the given menu and displays it to the user until the user signals to exit the program.
-
-It contains two other methods, SetStartMenu and GetMenuItem. They set the first menu shown to the user and get the user's menu choice respectively.
-
-This design gives the program a top-down structure, which makes the flow easier to follow.
+Controls the flow of the application. It acts as the program's point of entry and point of exit. It contains functionality for starting the menu loop, setting and getting the menu, and exiting the menu loop. It is designed to give the program a top-down structure (start-loop-exit), which makes the flow easier to follow.
 
 UserInputHandler:
-Contains two methods, GetUserKey and GetUserLine, to get the user's key press and text input respectively.
-The naming and grouping of the methods in this class give the reader a clear indication that this is where user input is handled, which makes it easier to debug issues related to user input.
+Contains methods for reading user input. The naming and grouping of the methods gives the reader a clear indication that this is where user input is handled. This makes it easier to debug issues related to user input.
 
 Ui.cs
-Contains a single method, ShowUi, to write the given text output to the console.
-Wrapping Console in the Ui class makes it more readable when we need to write to the console from the menu flow. Instead of having to write Console.WriteLine(), we can now write Ui.ShowUi(). Having Console.WriteLine contained in a given method also ensures that we only need to change the code in that specific place if we want to alter how we write to the console.
+Contains a method for writing to the console. Wrapping the write functionality in a specific class and method makes it so that we only have to change the code in that specific place. If we want to change how we write to the console in the future this saves us from having to change code in many different places.
 
 Extensions.cs
-Contains all the extension classes and their methods.
-Each extension class is named after the respective type its methods extends, followed by the word 'Extensions'.
-StringExtensions
-DictionaryExtensions
-ListExtensions
-
-Using extension methods allows us to extend a type's functionality by adding our own methods. These methods will then act as if they existed in the given type, and they will also appear in the autocomplete for that type. This also lets us perform operations directly on the type itself, which means we can chain several methods together to perform operations in sequence using dot notation.
-
-In the program it makes the code more concise and readable.
-For instance, in GetMenuItem() we can return the result in a single line by passing the return value along the extension chain, instead of writing separate method calls on different lines.
+Contains all the extension classes and extension methods used in the program. These add custom functionality to existing type, and by using extension methods we can chain together several method calls in sequence. In the program this makes the code more concise and readable. For instance, in GetMenuItem() we can return the result in a single line by passing the return value along the extension chain, instead of writing separate method calls on different lines.
 Example: return DataSorter.GetFiveByName().BuildMenu();
