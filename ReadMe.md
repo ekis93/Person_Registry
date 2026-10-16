@@ -5,10 +5,14 @@
 2: From the solution folder, run './Person_Registry/bin/Release/net10.0/publish/Person_Registry' in the console
 
 #### Windows
-1: From the solution folder, run 'dotnet publish' in the console
-
-2: Go to .\Person_Registry\bin\Release\net10.0\publish
-
+1: From the solution folder, run: 
+...
+'dotnet publish' in the console
+...
+2: Go to: 
+...
+.\Person_Registry\bin\Release\net10.0\publish
+...
 3: Double click Person_Registry.exe
 
 # Code segmentation
