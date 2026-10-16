@@ -8,7 +8,7 @@ public static class StringExtensions
     {
         Console.WriteLine(str);
     }
-    public static string Reset(this string str)
+    public static string ClearUi(this string str)
     {
         Console.Clear();
         return str;
