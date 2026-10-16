@@ -4,7 +4,7 @@ namespace Person_Registry;
 
 public static class StringExtensions
 {
-    public static void Show(this string str)
+    public static void ShowUi(this string str)
     {
         Console.WriteLine(str);
     }
