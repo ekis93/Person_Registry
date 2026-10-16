@@ -2,7 +2,9 @@
 #### Linux
 1: From the solution folder, run the following in the console: 
 ```
+//Buuld
 dotnet publish
+//Run
 ./Person_Registry/bin/Release/net10.0/publish/Person_Registry
 ```
 #### Windows
